@@ -1,0 +1,16 @@
+{
+    "_disclaimer": "This risk-level-to-recommendation mapping is a prototype engineering rule for the DermaReason final-year project. It is informed by the general pattern found across AAD/NHS/DermNet sources (stable/benign -> monitor, concerning -> evaluate, malignant/urgent -> prompt referral), but the specific mapping and wording below are our own simplification and are NOT a clinically validated triage protocol. It must be reviewed by a qualified clinical advisor before any real-world use.",
+
+    "risk_level_to_recommendation": {
+        "LOW": "MONITOR",
+        "MODERATE": "CONSULT_DERMATOLOGIST",
+        "HIGH": "URGENT_REFERRAL",
+        "URGENT": "URGENT_REFERRAL"
+    },
+
+    "recommendation_text": {
+        "MONITOR": "No immediate action required beyond routine self-monitoring. Track the lesion for any change in size, shape, color, or symptoms, and seek evaluation if changes occur.",
+        "CONSULT_DERMATOLOGIST": "Schedule an appointment with a dermatologist for clinical evaluation of this lesion.",
+        "URGENT_REFERRAL": "Seek prompt evaluation by a dermatologist or qualified healthcare professional. Do not delay assessment."
+    }
+}

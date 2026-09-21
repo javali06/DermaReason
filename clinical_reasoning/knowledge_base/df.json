@@ -1,0 +1,40 @@
+{
+    "disease_code": "DF",
+    "display_name": "Dermatofibroma",
+    "description": "A dermatofibroma is a common, benign fibrous skin nodule formed by a proliferation of fibrohistiocytic cells within the dermis, most often found on the lower legs. It is typically a small, firm, solitary growth that is harmless and usually asymptomatic, and does not give rise to cancer.",
+    "general_concern_level": "benign_low",
+    "symptoms": [
+        "Firm, well-circumscribed nodule, usually 0.5-1.5 cm in diameter",
+        "Pink to light brown color on lighter skin, dark brown to black on darker skin; sometimes paler in the center",
+        "Feels like a small stone under, or slightly raised above, the skin surface",
+        "Tethered to the skin surface but mobile over underlying tissue",
+        "Characteristic \"dimple sign\" (or \"pinch sign\"): the overlying skin dimples inward when the nodule is pinched",
+        "Usually asymptomatic, but sometimes painful, tender, or itchy",
+        "More common in adults, and more common in women than men"
+    ],
+    "warning_signs": [
+        "Recent enlargement",
+        "Ulceration",
+        "Asymmetrical structures or colors on dermoscopy",
+        "Large size or discomfort warranting professional assessment"
+    ],
+    "recommendation": "Usually only reassurance is needed, since dermatofibroma does not become cancerous. A dermatologist may recommend biopsy or excision if atypical features (recent enlargement, ulceration, dermoscopic asymmetry) are present, primarily to rule out look-alike conditions such as dermatofibrosarcoma protuberans or desmoplastic melanoma rather than because the dermatofibroma itself has changed. Surgical removal is optional if the lesion is a cosmetic nuisance, though recurrence after removal is common.",
+    "sources": [
+        {
+            "title": "Dermatofibroma (histiocytoma)",
+            "organization": "DermNet NZ",
+            "url": "https://dermnetnz.org/topics/dermatofibroma"
+        },
+        {
+            "title": "Dermatofibroma (fibrous histiocytoma) pathology",
+            "organization": "DermNet NZ",
+            "url": "https://dermnetnz.org/topics/dermatofibroma-fibrous-histiocytoma-pathology"
+        },
+        {
+            "title": "Cellular Dermatofibroma: Causes, Symptoms & Treatment",
+            "organization": "Cleveland Clinic",
+            "url": "https://my.clevelandclinic.org/health/diseases/22668-cellular-dermatofibroma"
+        }
+    ],
+    "last_reviewed": "2026-09-21"
+}
