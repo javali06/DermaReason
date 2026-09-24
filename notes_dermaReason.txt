@@ -1,0 +1,86 @@
+              Metric      Value
+0       Total Images      10015
+1  Number of Classes          7
+2      Largest Class  nv (6705)
+3     Smallest Class   df (115)
+4    Imbalance Ratio       58.3
+
+Minimum Height: 450
+Maximum Height: 450
+
+Minimum Width: 600
+Maximum Width: 600
+
+Train ≈ 7010
+Val   ≈ 1502
+Test  ≈ 1503
+
+| Model           | Epochs | Train Acc | Val Acc |
+| --------------- | ------ | --------- | ------- |
+| EfficientNet-B0 | 1      | 87.22%    | 76.30%  |
+
+
+Weighted CrossEntropyLoss was introduced to mitigate severe class imbalance. Although overall accuracy decreased slightly, recall improved significantly for minority classes such as Dermatofibroma (0.12 → 0.29), demonstrating improved sensitivity to underrepresented lesions.
+
+1. Explainability Agent
+Main algorithm: EfficientNet-B0 (CNN)
+
+Purpose:
+
+Skin lesion classification
+Predicts one of the 7 HAM10000 classes
+
+Algorithms used internally:
+
+Convolutional Neural Networks (CNNs)
+Mobile Inverted Bottleneck Convolutions (MBConv)
+Squeeze-and-Excitation (SE) Attention Blocks
+Compound Scaling (depth, width, resolution scaling)
+
+You can say:
+
+The Explainability Agent uses EfficientNet-B0, a CNN architecture that combines MBConv blocks and Squeeze-and-Excitation attention mechanisms to classify skin lesions into seven disease categories.
+
+Grad-CAM
+
+Purpose:
+
+Show why the model predicted a disease
+
+Algorithm:
+
+Gradient-weighted Class Activation Mapping
+
+Steps:
+
+Forward pass through CNN
+Compute gradients of predicted class
+Average gradients
+Weight feature maps
+Generate heatmap
+
+You can say:
+
+For visual explanations we use Grad-CAM, which computes gradients of the predicted class with respect to convolutional feature maps and generates a heatmap highlighting important image regions.
+
+Recommendation Engine
+
+Algorithm:
+
+Decision Tree / Rule Engine
+
+Example:
+
+IF risk == HIGH
+THEN dermatologist visit
+
+You can say:
+
+Recommendations are generated using a decision-tree style rule engine based on risk level and disease characteristics.
+
+The agent follows a Retrieval-Augmented Prompting architecture.
+
+1. Structured outputs are retrieved from upstream agents.
+2. A prompt-construction module formats them into a controlled template.
+3. An LLM generates a natural-language explanation.
+4. A validation layer constrains the output to remain consistent with the system's predictions and recommendations.

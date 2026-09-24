@@ -1,0 +1,28 @@
+{
+    "_disclaimer": "These are prototype/configuration values created for the DermaReason final-year project. They are engineering choices for demonstrating a rule-based risk engine and are NOT clinically validated thresholds. They must be reviewed by a qualified clinical advisor before any real-world use.",
+
+    "confidence_thresholds": {
+        "low": 0.50,
+        "medium": 0.75,
+        "high": 0.90
+    },
+
+    "concern_level_weights": {
+        "malignant_high": 3,
+        "locally_invasive_moderate": 2,
+        "precancerous_moderate": 2,
+        "benign_low": 0
+    },
+
+    "warning_sign_weight": 1,
+    "max_warning_sign_score": 3,
+
+    "low_confidence_caution_weight": 1,
+
+    "risk_score_bands": {
+        "LOW": [0, 0],
+        "MODERATE": [1, 2],
+        "HIGH": [3, 4],
+        "URGENT": [5, null]
+    }
+}

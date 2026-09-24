@@ -1,0 +1,22 @@
+# Dataset
+dataset/raw/images/
+
+# Models
+*.pth
+*.pt
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+dataset/processed/
+*.zip

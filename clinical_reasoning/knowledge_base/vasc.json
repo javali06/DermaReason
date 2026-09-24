@@ -1,0 +1,48 @@
+{
+    "disease_code": "VASC",
+    "display_name": "Vascular Lesions",
+    "description": "This dataset label groups several distinct vascular skin findings: cherry angioma (a benign capillary proliferation), angiokeratoma (a benign capillary ectasia with a rough surface, including a rare form associated with Fabry disease), pyogenic granuloma (a rapidly growing, benign capillary tumor that bleeds easily), and hemorrhage/hematoma (extravasated blood from trauma, not a tumor at all). These entities differ meaningfully in cause, growth pattern, and clinical significance.",
+    "taxonomy_note": "VASC is a combined dataset category covering at least four clinically distinct findings. A prediction of 'VASC' does not indicate which specific vascular lesion is present, and the entities it covers range from entirely incidental (cherry angioma) to ones with a genuine bleeding risk and documented melanoma-mimicry (pyogenic granuloma, hematoma).",
+    "general_concern_level": "benign_low",
+    "symptoms": [
+        "Cherry angioma: firm red, blue, or purple papule, 0.1-1 cm, usually asymptomatic, may appear on the trunk",
+        "Angiokeratoma: asymptomatic blue-red papule with a rough or warty surface, usually under 5mm, does not resolve spontaneously",
+        "Pyogenic granuloma: painless red fleshy nodule, typically 5-10 mm, growing rapidly over a few weeks; surface may ulcerate, crust, or become verrucous",
+        "Hemorrhage/hematoma: a discolored area (reddish, purple, brown, or black depending on healing stage) from trauma, for example a subungual hemorrhage under a nail"
+    ],
+    "warning_signs": [
+        "Pyogenic granuloma bleeds easily or profusely with minor trauma and can recur after inadequate treatment; it shares many clinical and dermoscopic features with amelanotic melanoma, which is the most important differential diagnosis",
+        "Cherry angioma and angiokeratoma may be confused with nodular basal cell carcinoma or amelanotic melanoma, which is why diagnostic removal is sometimes performed",
+        "Subungual hemorrhage: a normal-appearing proximal nail as it grows out excludes a melanocytic cause; irregular pigmentation across the full nail length, irregularly spaced pigmented bands, pigment extending onto surrounding skin (Hutchinson sign), or nail dystrophy/ulceration are melanoma warning signs",
+        "Hematomas can be dermoscopically indistinguishable from acral lentiginous melanoma in some cases; without a clear trauma history, biopsy or excision may be needed to exclude melanoma"
+    ],
+    "recommendation": "Cherry angioma and angiokeratoma generally do not require treatment. Pyogenic granuloma and any lesion without a clear trauma history, or with atypical/melanoma-like features, warrant dermatologist evaluation, and biopsy or excision may be used specifically to exclude melanoma.",
+    "sources": [
+        {
+            "title": "Cherry Angioma: Features, Causes, and Removal",
+            "organization": "DermNet NZ",
+            "url": "https://dermnetnz.org/topics/cherry-angioma"
+        },
+        {
+            "title": "Pyogenic granuloma",
+            "organization": "DermNet NZ",
+            "url": "https://dermnetnz.org/topics/pyogenic-granuloma"
+        },
+        {
+            "title": "Angiokeratoma: Types and Appearances",
+            "organization": "DermNet NZ",
+            "url": "https://dermnetnz.org/topics/angiokeratoma"
+        },
+        {
+            "title": "Subungual haemorrhage",
+            "organization": "DermNet NZ",
+            "url": "https://dermnetnz.org/topics/subungual-haemorrhage"
+        },
+        {
+            "title": "Intracorneal Hematoma Showing Clinical and Dermoscopic Features of Acral Lentiginous Melanoma",
+            "organization": "PMC (National Library of Medicine)",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5439066/"
+        }
+    ],
+    "last_reviewed": "2026-09-21"
+}
