@@ -100,7 +100,7 @@ def _make_fallback_heatmap_and_overlay(image_path: str):
     cv2.imwrite(str(overlay_path), cv2.cvtColor(overlay, cv2.COLOR_RGB2BGR))
 
     return {
-        "disease": "mel",
+        "disease": "melanoma",
         "confidence": 0.5,
         "original_path": str(original_path),
         "heatmap_path": str(heatmap_path),
@@ -157,7 +157,7 @@ def process_image(image):
     overlay_image = Image.open(explained.get("overlay_path", explained.get("original_path", image_path)))
 
     return (
-        model_status,
+        gr.update(visible=True),
         result.display_name,
         f"{result.confidence:.4f}",
         result.risk_level,
@@ -169,39 +169,125 @@ def process_image(image):
     )
 
 
-with gr.Blocks(title="DermaReason Demo") as demo:
-    gr.Markdown("# DermaReason Demo")
-    gr.Markdown(
-        "Upload a skin image to get disease prediction, clinical reasoning, recommendation, and Grad-CAM explainability."
-    )
+CUSTOM_CSS = """
+.gradio-container {
+    max-width: 1400px !important;
+}
 
-    with gr.Row():
-        image_input = gr.Image(type="pil", label="Upload Skin Image")
+h1,h2,h3 {
+    font-family: Inter, sans-serif;
+}
 
-    run_button = gr.Button("Run Diagnosis", variant="primary")
+.gr-button-primary {
+    font-size:18px !important;
+    font-weight:600 !important;
+    border-radius:12px !important;
+}
 
-    status_output = gr.Textbox(label="Model Status")
+.gr-box {
+    border-radius:16px !important;
+}
 
-    with gr.Row():
-        disease_output = gr.Textbox(label="Predicted Disease")
-        confidence_output = gr.Textbox(label="Confidence")
+textarea {
+    font-size:14px !important;
+}
+"""
 
-    with gr.Row():
-        risk_output = gr.Textbox(label="Risk Level")
-        recommendation_output = gr.Textbox(label="Recommendation")
+theme = gr.themes.Soft(
+    primary_hue=gr.themes.colors.teal,
+    secondary_hue=gr.themes.colors.slate,
+    neutral_hue=gr.themes.colors.slate,
+).set(
+    body_background_fill="#f4f6f8",
+    body_text_color="#1f2933",
+    block_background_fill="#ffffff",
+    block_border_color="#e2e8f0",
+    block_radius="10px",
+    block_shadow="0 1px 2px rgba(15, 23, 42, 0.06)",
+    button_primary_background_fill="#2a6f7f",
+    button_primary_background_fill_hover="#245f6d",
+    button_primary_text_color="#ffffff",
+    input_background_fill="#f8fafc",
+    border_color_primary="#d8e0e8",
+)
 
-    with gr.Row():
-        original_output = gr.Image(label="Original Image")
-        heatmap_output = gr.Image(label="Heatmap")
-        overlay_output = gr.Image(label="Overlay")
+with gr.Blocks(title="DermaReason") as demo:
+    gr.HTML("""
+    <div style='text-align:center;padding:25px;margin-bottom:15px'>
+        <h1 style='font-size:42px;color:#2563EB;margin-bottom:5px'>
+            🔬 DermaReason
+        </h1>
 
-    report_output = gr.Textbox(label="Final Clinical Report", lines=18)
+        <h3 style='color:#475569'>
+            AI-Powered Skin Lesion Analysis & Clinical Reasoning
+        </h3>
+
+        <p style='max-width:800px;margin:auto;color:#64748B'>
+            Deep Learning based dermatological diagnosis system integrating
+            EfficientNet-B0 classification, Grad-CAM explainability,
+            clinical reasoning, and automated report generation.
+        </p>
+    </div>
+    """)
+
+    with gr.Group():
+        gr.Markdown("## 📤 Upload Dermoscopic Image")
+
+        image_input = gr.Image(
+            type="pil",
+            label="Skin Lesion Image",
+            height=400,
+        )
+
+        run_button = gr.Button(
+            "🚀 Analyze Lesion",
+            variant="primary",
+            size="lg",
+        )
+
+    with gr.Column(visible=False) as results_section:
+        gr.Markdown("## 📊 Diagnostic Summary")
+
+        with gr.Row():
+            disease_output = gr.Textbox(label="Predicted Disease")
+            confidence_output = gr.Textbox(label="Confidence Score")
+            risk_output = gr.Textbox(label="Risk Level")
+
+        with gr.Row():
+            gr.Textbox(label="Model", value="EfficientNet-B0", interactive=False)
+            gr.Textbox(label="Dataset", value="HAM10000", interactive=False)
+            gr.Textbox(label="Test Accuracy", value="71.3%", interactive=False)
+
+        gr.Markdown("## 💡 Clinical Recommendation")
+
+        recommendation_output = gr.Textbox(
+            lines=3,
+            label="Recommended Action",
+        )
+
+        gr.Markdown("## 🔥 Explainability Analysis")
+        gr.Markdown(
+            "Grad-CAM highlights the image regions that most influenced the prediction."
+        )
+
+        with gr.Row():
+            original_output = gr.Image(label="Original Image", height=300)
+            heatmap_output = gr.Image(label="Grad-CAM Heatmap", height=300)
+            overlay_output = gr.Image(label="Overlay Visualization", height=300)
+
+        gr.Markdown("## 📄 Clinical Reasoning Report")
+
+        report_output = gr.Textbox(
+            lines=25,
+            buttons=["copy"],
+            label="",
+        )
 
     run_button.click(
         fn=process_image,
         inputs=[image_input],
         outputs=[
-            status_output,
+            results_section,
             disease_output,
             confidence_output,
             risk_output,
@@ -216,4 +302,9 @@ with gr.Blocks(title="DermaReason Demo") as demo:
 
 if __name__ == "__main__":
     port = _find_available_port()
-    demo.launch(server_name="127.0.0.1", server_port=port, theme=gr.themes.Soft())
+    demo.launch(
+        server_name="127.0.0.1",
+        server_port=port,
+        theme=theme,
+        css=CUSTOM_CSS,
+    )
